@@ -1,15 +1,21 @@
 doctype html
-html 
-    head 
-        title= `${title}`
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/css/style.css")
-    body    
-        h1 Pets
-        .cards 
-            each pet in results
-                .card 
-                    h2.card__name 
-                      | #{pet.properties.name} 
-                      span.card__text age #{pet.properties.age}
-                    p.card__text #{pet.properties.type}
+html
+  head
+    title= `${title}`
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/css/style.css")
+  body
+    h1 Custom Object Table
+    a(href="/update-cobj") Add/Update this table
+    table
+      thead
+        tr
+          th Name
+          th Age
+          th Type
+      tbody
+        each pet in results
+          tr
+            td.card__name #{pet.properties.name}
+            td.card__text.age #{pet.properties.age}
+            td.card__text #{pet.properties.type}

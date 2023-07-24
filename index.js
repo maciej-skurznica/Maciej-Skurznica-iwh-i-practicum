@@ -20,7 +20,7 @@ app.get("/", async (req, res) => {
   try {
     const { data } = await axios.get(url, { headers });
     res.render("index", {
-      title: "Pets - custom object",
+      title: "Pets | Integrating With HubSpot I Practicum",
       results: data.results,
     });
   } catch (error) {
