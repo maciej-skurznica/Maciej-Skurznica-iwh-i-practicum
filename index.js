@@ -11,7 +11,23 @@ const PRIVATE_APP_ACCESS = "pat-eu1-aee2ceeb-97e3-4384-8989-a0485c2b8082";
 
 // TODO: ROUTE 1 - Create a new app.get route for the homepage to call your custom object data. Pass this data along to the front-end and create a new pug template in the views folder.
 
-// * Code for Route 1 goes here
+app.get("/", async (req, res) => {
+  const pets =
+    "https://api.hubspot.com/crm/v3/objects/pets?properties=name,age,type";
+  const headers = {
+    Authorization: `Bearer ${PRIVATE_APP_ACCESS}`,
+    "Content-Type": "application/json",
+  };
+
+  try {
+    const response = await axios.get(pets, { headers });
+    const data = response.data.results;
+    // res.json(data);
+    res.render("index", { title: "Pets - custom object", data });
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 // TODO: ROUTE 2 - Create a new app.get route for the form to create or update new custom object data. Send this data along in the next route.
 
