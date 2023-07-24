@@ -29,7 +29,9 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/update-cobj", (req, res) => {
-  res.render("update-cobj", { title: "Form - custom object" });
+  res.render("updates", {
+    title: "Update Custom Object Form | Integrating With HubSpot I Practicum",
+  });
 });
 
 app.post("/update-cobj", async (req, res) => {
